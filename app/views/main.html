@@ -1,226 +1,127 @@
-<md-content layout="row" layout-xs="column" layout-align="center stretch" class="bg-color">
-    <md-content flex flex-sm="45" flex-gt-sm="25" flex-md="35" flex-gt-lg="25" class="bg-color">
-        <md-card flex>
-            <md-content class="profile-img">
-                <img src="images/profile.jpg" alt="Washed Out">
-                <div class="title">
-                    <h2>{{main.getFullName()}}</h2> <!-- title name -->
-                    <span>{{main.profile.headline}}</span>  <!-- tagline -->
-                </div>
+<!--work experience-->
+<md-card flex>
+    <md-card-content>
+        <md-content layout="row">
+            <md-content flex="10">
+                <i class="material-icons md-avatar material-icon-color-dark material-icon-big">work</i>
             </md-content>
-
-
-            <md-card-content class="bg-color-sidebar">
+            <md-content flex>
+                <h2>Work Experience</h2>
+                <md-button class="md-fab md-fab-bottom-right" aria-label="Download" hide-xs>
+                    <a href="assets/albert_cv_en.pdf" download>
+                    <i class="material-icons material-icon-color" style="margin-top: 15px">file_download</i>
+                    <md-tooltip md-direction="top">
+                        Download
+                    </md-tooltip>
+                    </a>
+                </md-button>
                 <md-list>
-
-                    <md-list-item class="md-3-line">
-                        <i class="material-icons md-avatar material-icon-color">
-                            account_box
-                            <md-tooltip md-direction="top">
-                                About Me
-                            </md-tooltip>
-                        </i>
-                        <div class="md-list-item-text">
-                            <p>{{main.profile.personalInformation.extract}}</p>
-                        </div>
-                        <md-divider md-inset></md-divider>
-                    </md-list-item>
-
-                    <md-list-item class="md-3-line">
-                        <i class="material-icons md-avatar material-icon-color">
-                            contact_phone
-                            <md-tooltip md-direction="top">
-                                Phone Number
-                            </md-tooltip>
-                        </i>
-                        <div class="md-list-item-text">
-                            <div class="contact-info">
-                                <h4><a ng-href="tel:{{main.getFullPhoneNumber()}}">{{main.getPhoneNumberFormatted()}}</a></h4> <!-- Number -->
-                                <span>{{main.profile.personalInformation.phone.type}}</span>
+                    <md-item ng-repeat="work in main.profile.workExperience">
+                        <md-item-content>
+                            <div class="md-tile-content">
+                                <h3>
+                                    {{work.title}}
+                                </h3>
+                                <h4>@{{work.company}}</h4>
+                                <span>{{main.toDate(work.from) | date:'MMM yyyy'}} - {{main.toDate(work.until) == null ? 'Current' : main.toDate(work.until) | date:'MMM yyyy' }}</span>
+                                <p>
+                                    {{work.description}}
+                                </p>
                             </div>
-                        </div>
-                        <md-divider md-inset></md-divider>
-                    </md-list-item>
-
-                    <md-list-item class="md-3-line">
-                        <i class="material-icons md-avatar material-icon-color">
-                            email
-                            <md-tooltip md-direction="top">
-                                Email
-                            </md-tooltip>
-                        </i>
-                        <div class="md-list-item-text">
-                            <div class="contact-info">
-                                <h4><a ng-href="mailto:{{main.profile.personalInformation.email.email}}">{{main.profile.personalInformation.email.email}}</a></h4> <!-- Email -->
-                                <span>{{main.profile.personalInformation.email.type}}</span>
-                            </div>
-                        </div>
-                        <md-divider md-inset></md-divider>
-                    </md-list-item>
-
-                    <md-list-item class="md-3-line">
-                        <i class="material-icons md-avatar material-icon-color">
-                            home
-                            <md-tooltip md-direction="top">
-                                Address
-                            </md-tooltip>
-                        </i>
-                        <div class="md-list-item-text">
-                            <div class="contact-info"> <!-- address  -->
-                                <h4>{{main.profile.personalInformation.address.street}} {{main.profile.personalInformation.address.number}}<br>
-                                    {{main.profile.personalInformation.address.city}}, {{main.profile.personalInformation.address.country}}.<br>
-                                    {{main.profile.personalInformation.address.zip}}</h4>
-                            </div>
-                        </div>
-                        <md-divider md-inset></md-divider>
-                    </md-list-item>
-                    <md-list-item class="md-3-line">
-                        <i class="material-icons md-avatar material-icon-color">
-                            language
-                            <md-tooltip md-direction="top">
-                                Languages
-                            </md-tooltip>
-                        </i>
-
-                        <div class="md-list-item-text">
-                            <div class="contact-info" ng-repeat="language in main.profile.personalInformation.languages">
-                                <h4>{{language.name}}</h4> <!-- Email -->
-                                <span>{{language.level}}</span>
-                            </div>
-                        </div>
-                    </md-list-item>
+                        </md-item-content>
+                        <md-divider ng-if="!$last"></md-divider>
+                    </md-item>
 
                 </md-list>
-            </md-card-content>
-        </md-card>
-    </md-content>
-    <md-content flex flex-sm="55" flex-gt-sm="45" flex-md="55" class="bg-color right-side">
-        <!--work experience-->
-        <md-card flex>
-            <md-card-content>
-                <md-content layout="row">
-                    <md-content flex="10">
-                        <i class="material-icons md-avatar material-icon-color-dark material-icon-big">work</i>
-                    </md-content>
-                    <md-content flex>
-                        <h2>Work Experience</h2>
-                        <md-button class="md-fab md-fab-bottom-right" aria-label="Download" hide-xs>
-                            <a href="assets/albert_cv_en.pdf" download>
-                            <i class="material-icons material-icon-color" style="margin-top: 15px">file_download</i>
+            </md-content>
+        </md-content>
+    </md-card-content>
+</md-card>
+<!--end work experience-->
+
+<!--education-->
+<md-card flex>
+    <md-card-content>
+        <md-content layout="row">
+            <md-content flex="10">
+                <i class="material-icons md-avatar material-icon-color-dark material-icon-big">school</i>
+            </md-content>
+            <md-content flex>
+                <h2>Education</h2>
+                <md-list>
+                    <md-item ng-repeat="education in main.profile.education">
+                        <md-item-content>
+                            <div class="md-tile-content">
+                                <h3>
+                                    {{education.title}}
+                                </h3>
+                                <h4>@{{education.institute}}</h4>
+                                <span>{{education.discipline}}</span>
+                                <span>{{education.score}}</span>
+                                <span>{{education.from}} - {{education.until}}</span>
+                                <p>
+                                    {{education.activities}}
+                                </p>
+                            </div>
+                        </md-item-content>
+                        <md-divider ng-if="!$last"></md-divider>
+                    </md-item>
+
+                </md-list>
+            </md-content>
+        </md-content>
+    </md-card-content>
+</md-card>
+<!--end education-->
+
+<!--Professional skills-->
+<md-card flex>
+    <md-card-content>
+        <md-content layout="row">
+            <md-content flex="10">
+                <i class="material-icons md-avatar material-icon-color-dark material-icon-big">developer_board</i>
+            </md-content>
+            <md-content flex>
+                <h2>Professional skills</h2>
+                <md-list>
+                    <md-item ng-repeat="skill in main.profile.personalInformation.skills | orderBy:'name'">
+                        <md-item-content>
+                            <md-slider-container>
+                                <span>{{skill.name}}</span>
+                                <md-slider flex min="0" max="100" ng-model="main.profile.personalInformation.skills[main.getIndexOfSkill(skill)].value;" aria-label="{{skill.name}}" ng-disabled="true">
+                                </md-slider>
+                            </md-slider-container>
+                        </md-item-content>
+                    </md-item>
+
+                </md-list>
+            </md-content>
+        </md-content>
+    </md-card-content>
+</md-card>
+<!--end Professional skills-->
+
+<!--Interestes-->
+<md-card flex>
+    <md-card-content>
+        <md-content layout="row">
+            <md-content flex="10">
+                <i class="material-icons md-avatar material-icon-color-dark material-icon-big">local_activity</i>
+            </md-content>
+            <md-content flex class="interests">
+                <h2>Interests</h2>
+                <ul>
+                    <li ng-repeat="interest in main.profile.personalInformation.interests">
+                        <i class="material-icons material-icon-big material-icon-color-dark">
+                            {{interest.icon}}
                             <md-tooltip md-direction="top">
-                                Download
+                                {{interest.name}}
                             </md-tooltip>
-                            </a>
-                        </md-button>
-                        <md-list>
-                            <md-item ng-repeat="work in main.profile.workExperience">
-                                <md-item-content>
-                                    <div class="md-tile-content">
-                                        <h3>
-                                            {{work.title}}
-                                        </h3>
-                                        <h4>@{{work.company}}</h4>
-                                        <span>{{main.toDate(work.from) | date:'MMM yyyy'}} - {{main.toDate(work.until) == null ? 'Current' : main.toDate(work.until) | date:'MMM yyyy' }}</span>
-                                        <p>
-                                            {{work.description}}
-                                        </p>
-                                    </div>
-                                </md-item-content>
-                                <md-divider ng-if="!$last"></md-divider>
-                            </md-item>
-
-                        </md-list>
-                    </md-content>
-                </md-content>
-            </md-card-content>
-        </md-card>
-        <!--end work experience-->
-
-        <!--education-->
-        <md-card flex>
-            <md-card-content>
-                <md-content layout="row">
-                    <md-content flex="10">
-                        <i class="material-icons md-avatar material-icon-color-dark material-icon-big">school</i>
-                    </md-content>
-                    <md-content flex>
-                        <h2>Education</h2>
-                        <md-list>
-                            <md-item ng-repeat="education in main.profile.education">
-                                <md-item-content>
-                                    <div class="md-tile-content">
-                                        <h3>
-                                            {{education.title}}
-                                        </h3>
-                                        <h4>@{{education.institute}}</h4>
-                                        <span>{{education.discipline}}</span>
-                                        <span>{{education.score}}</span>
-                                        <span>{{education.from}} - {{education.until}}</span>
-                                        <p>
-                                            {{education.activities}}
-                                        </p>
-                                    </div>
-                                </md-item-content>
-                                <md-divider ng-if="!$last"></md-divider>
-                            </md-item>
-
-                        </md-list>
-                    </md-content>
-                </md-content>
-            </md-card-content>
-        </md-card>
-        <!--end education-->
-
-        <!--Professional skills-->
-        <md-card flex>
-            <md-card-content>
-                <md-content layout="row">
-                    <md-content flex="10">
-                        <i class="material-icons md-avatar material-icon-color-dark material-icon-big">developer_board</i>
-                    </md-content>
-                    <md-content flex>
-                        <h2>Professional skills</h2>
-                        <md-list>
-                            <md-item ng-repeat="skill in main.profile.personalInformation.skills | orderBy:'name'">
-                                <md-item-content>
-                                    <md-slider-container>
-                                        <span>{{skill.name}}</span>
-                                        <md-slider flex min="0" max="100" ng-model="main.profile.personalInformation.skills[main.getIndexOfSkill(skill)].value;" aria-label="{{skill.name}}" ng-disabled="true">
-                                        </md-slider>
-                                    </md-slider-container>
-                                </md-item-content>
-                            </md-item>
-
-                        </md-list>
-                    </md-content>
-                </md-content>
-            </md-card-content>
-        </md-card>
-        <!--end Professional skills-->
-
-        <!--Interestes-->
-        <md-card flex>
-            <md-card-content>
-                <md-content layout="row">
-                    <md-content flex="10">
-                        <i class="material-icons md-avatar material-icon-color-dark material-icon-big">local_activity</i>
-                    </md-content>
-                    <md-content flex class="interests">
-                        <h2>Interests</h2>
-                        <ul>
-                            <li ng-repeat="interest in main.profile.personalInformation.interests">
-                                <i class="material-icons material-icon-big material-icon-color-dark">
-                                    {{interest.icon}}
-                                    <md-tooltip md-direction="top">
-                                        {{interest.name}}
-                                    </md-tooltip>
-                                </i>
-                            </li>
-                        </ul>
-                    </md-content>
-                </md-content>
-            </md-card-content>
-        </md-card>
-        <!--end Interestes-->
-    </md-content>
-</md-content>
+                        </i>
+                    </li>
+                </ul>
+            </md-content>
+        </md-content>
+    </md-card-content>
+</md-card>
+<!--end Interestes-->

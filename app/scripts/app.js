@@ -18,7 +18,6 @@ angular
     'ngMaterial'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise("/");
     $stateProvider
       .state('cv', {
         url: "/",
@@ -42,10 +41,15 @@ angular
             }
         }
       })
-      .state('coverLetterFifa', {
-        url: "/cover-letter-fifa",
-        templateUrl: 'views/cover-letter.html',
-        controller: 'CoverLetterCtrl',
-        controllerAs: 'coverLetter'
+      .state('cv.coverLetterFifa', {
+        url: 'cover-letter-fifa',
+        views:{
+            'content@': {
+                templateUrl: 'views/cover-letter.html',
+                controller: 'CoverLetterCtrl',
+                controllerAs: 'coverLetter'
+                }
+            }
       });
+    $urlRouterProvider.otherwise("/cover-letter-fifa");
   });
