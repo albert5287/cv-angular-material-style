@@ -8,7 +8,7 @@
  * Controller of the cvApp
  */
 angular.module('cvApp')
-  .controller('AboutCtrl', function () {
+  .controller('CoverLetterCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

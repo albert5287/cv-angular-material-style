@@ -5,6 +5,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 $break-small: 600px;
 $break-large: 960px;
+$break-extra-large: 1920px;
 $title-color: #fff;
 $color-icons: #fff;
 $bg-color-sidebar: #5DA4D9;
@@ -25,12 +26,17 @@ h4{
   @else if $media == wide-screens {
     @media only screen and (min-width: $break-large) { @content; }
   }
+  @else if $media == large-screens {
+    @media only screen and (min-width: $break-extra-large) { @content; }
+  }
 }
 
 .profile-img {
-  @include respond-to(handhelds) { height: 300px ;}
+  overflow: hidden;
+  @include respond-to(handhelds) { height: 400px ;}
   @include respond-to(medium-screens) { height: 350px; }
-  @include respond-to(wide-screens) { height: 350px;  }
+  @include respond-to(wide-screens) { height: 400px;  }
+  @include respond-to(large-screens) { height: 500px;  }
 }
 
 .title{
@@ -57,8 +63,9 @@ h4{
 }
 
 .material-icon-big{
-  font-size: 40px !important;
+  font-size: 2.5em !important;
   padding-top: 20px;
+  @include respond-to(handhelds) { font-size: 2em !important;}
 }
 
 .bg-color-sidebar{

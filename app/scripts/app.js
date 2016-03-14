@@ -22,9 +22,18 @@ angular
     $stateProvider
       .state('cv', {
         url: "/",
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main',
+        views:{
+            sidebar: {
+                templateUrl: 'views/sideBar.html',
+                controller: 'SidebarCtrl',
+                controllerAs: 'sidebar'
+            },
+            content:{
+                templateUrl: 'views/main.html',
+                controller: 'MainCtrl',
+                controllerAs: 'main'
+            }
+        },
         resolve: {
             profile:  function(ProfileFactory){
                 return ProfileFactory.getProfile().success(function(data) {
@@ -33,25 +42,10 @@ angular
             }
         }
       })
-      .state('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+      .state('coverLetterFifa', {
+        url: "/cover-letter-fifa",
+        templateUrl: 'views/cover-letter.html',
+        controller: 'CoverLetterCtrl',
+        controllerAs: 'coverLetter'
       });
-  })
-    .directive('sticky', Sticky);
-
-Sticky.$inject = [ '$mdSticky' ];
-
-function Sticky($mdSticky) {
-    return {
-        restrict : 'A',
-        link : function(scope, element) {
-            console.log(element);
-            $mdSticky(scope, element);
-        }
-    }
-}
-
-
-;
+  });

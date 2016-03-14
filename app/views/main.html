@@ -1,8 +1,8 @@
 <md-content layout="row" layout-xs="column" layout-align="center stretch" class="bg-color">
-    <md-content flex flex-sm="45" flex-gt-sm="25" flex-md="30" flex-gt-md="20" class="bg-color">
+    <md-content flex flex-sm="45" flex-gt-sm="25" flex-md="35" flex-gt-lg="25" class="bg-color">
         <md-card flex>
-            <md-content>
-                <img class="profile-img" src="images/profile.jpg" alt="Washed Out">
+            <md-content class="profile-img">
+                <img src="images/profile.jpg" alt="Washed Out">
                 <div class="title">
                     <h2>{{main.getFullName()}}</h2> <!-- title name -->
                     <span>{{main.profile.headline}}</span>  <!-- tagline -->
@@ -104,7 +104,7 @@
                     </md-content>
                     <md-content flex>
                         <h2>Work Experience</h2>
-                        <md-button class="md-fab md-fab-bottom-right" aria-label="Add">
+                        <md-button class="md-fab md-fab-bottom-right" aria-label="Download" hide-xs>
                             <a href="assets/albert_cv_en.pdf" download>
                             <i class="material-icons material-icon-color" style="margin-top: 15px">file_download</i>
                             <md-tooltip md-direction="top">
