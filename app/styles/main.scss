@@ -3,89 +3,134 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+$break-small: 600px;
+$break-large: 960px;
+$title-color: #fff;
+$color-icons: #fff;
+$bg-color-sidebar: #5DA4D9;
+$color-icon-dark: #767270;
+$main-bg-color: #EAE8E7;
+
+h4{
+  font-size: 1.2em !important;
 }
 
-body {
-  padding: 0;
-}
-
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
+@mixin respond-to($media) {
+  @if $media == handhelds {
+    @media only screen and (max-width: $break-small) { @content; }
+  }
+  @else if $media == medium-screens {
+    @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) { @content; }
+  }
+  @else if $media == wide-screens {
+    @media only screen and (min-width: $break-large) { @content; }
   }
 }
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+.profile-img {
+  @include respond-to(handhelds) { height: 300px ;}
+  @include respond-to(medium-screens) { height: 350px; }
+  @include respond-to(wide-screens) { height: 350px;  }
 }
 
-.container-narrow > hr {
-  margin: 30px 0;
+.title{
+  position: absolute;
+  left: 20px;
+  bottom: 10px;
+  color: $title-color;
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
+.contact-info{
+  margin-bottom: 20px;
+}
 
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
+.margin-top-20{
+  margin-top: 20px;
+}
+
+.material-icon-color{
+  color: $color-icons;
+}
+
+.material-icon-color-dark{
+  color: $color-icon-dark;
+}
+
+.material-icon-big{
+  font-size: 40px !important;
+  padding-top: 20px;
+}
+
+.bg-color-sidebar{
+  background-color: $bg-color-sidebar;
+  h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    font-weight: inherit;
+  }
+  h4{
+    line-height: 2em !important;
+  }
+  p, a, span, h4{
+    color: $color-icons !important;
+  }
+  span{
+    opacity: 0.7;
+    font-weight: 300;
+  }
+
+}
+
+.right-side{
+  h4{
+    line-height: 1;
+  }
+  h2, h3, h4{
+    color: $color-icon-dark !important;
+  }
+  span{
+    color: $bg-color-sidebar
   }
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
+.bg-color{
+  background-color: $main-bg-color;
+}
 
-  p + h4 {
-    margin-top: 28px;
+
+md-list {
+  md-list-item md-divider[md-inset] {
+    left: 72px;
+    width: calc(100% - 72px);
+    margin: 0;
+  }
+
+  md-list-item.md-3-line .md-list-item-text p {
+    margin-bottom: 20px;
+  }
+  md-list-item.md-3-line{
+    /*padding-bottom: 20px;*/
+    padding-top: 20px;
+  }
+  md-list-item.md-3-line:first-child{
+    padding-top: 0;
   }
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
+.interests ul {
+  margin-top: 20px;
+  padding-left: 0px;
+}
+.interests ul li {
+  list-style-type: none;
+  display: inline-block;
+  width: 19%;
+}
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+.md-button.md-fab.md-fab-bottom-right {
+  top: 12px;
+  background-color: $bg-color-sidebar;
+}
+
+.md-button.md-fab:not([disabled]):hover {
+  opacity: 0.7;
+  background-color: $bg-color-sidebar;
 }

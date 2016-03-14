@@ -13,24 +13,45 @@ angular
     'ngAnimate',
     'ngCookies',
     'ngResource',
-    'ngRoute',
+    'ui.router',
     'ngSanitize',
-    'ngTouch',
     'ngMaterial'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
+  .config(function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise("/");
+    $stateProvider
+      .state('cv', {
+        url: "/",
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        controllerAs: 'main'
+        controllerAs: 'main',
+        resolve: {
+            profile:  function(ProfileFactory){
+                return ProfileFactory.getProfile().success(function(data) {
+                    return data;
+                });
+            }
+        }
       })
-      .when('/about', {
+      .state('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
-      })
-      .otherwise({
-        redirectTo: '/'
       });
-  });
+  })
+    .directive('sticky', Sticky);
+
+Sticky.$inject = [ '$mdSticky' ];
+
+function Sticky($mdSticky) {
+    return {
+        restrict : 'A',
+        link : function(scope, element) {
+            console.log(element);
+            $mdSticky(scope, element);
+        }
+    }
+}
+
+
+;
