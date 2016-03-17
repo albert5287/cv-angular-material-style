@@ -23,7 +23,7 @@ angular
         url: "/",
         views:{
             sidebar: {
-                templateUrl: 'views/sideBar.html',
+                templateUrl: 'views/sidebar.html',
                 controller: 'SidebarCtrl',
                 controllerAs: 'sidebar'
             },
@@ -51,5 +51,5 @@ angular
                 }
             }
       });
-    $urlRouterProvider.otherwise("/cover-letter-fifa");
+    $urlRouterProvider.otherwise("/");
   });
